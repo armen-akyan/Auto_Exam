@@ -51,13 +51,13 @@ public abstract class BasePage<T> {
 
     protected void type(WebElement element, String text) {
         LOGGER.info("Typing " + text + " in -> " + element.toString());
-
+        WaitHelper.getInstance().WaitForElementToBeDisplayed(element);
         element.sendKeys(text);
     }
 
     protected void click(WebElement element) {
         LOGGER.info("Clicking on -> " + element.toString());
-
+        WaitHelper.getInstance().WaitForElementToBeDisplayed(element);
         element.click();
     }
 

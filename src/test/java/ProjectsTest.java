@@ -10,7 +10,7 @@ public class ProjectsTest {
 
     @BeforeMethod
     public void drive() throws InterruptedException {
-        DriverSetUp.getDriver();
+        DriverSetUp.getDriver().manage().window().maximize();
         LoginTest.loginWithValidCredentials();
     }
 

@@ -12,6 +12,7 @@ public class CreateProjectPage extends BasePage<CreateProjectPage> {
     }
 
     public ScrumPage clickScrumProjectButton(){
+
         click(scrumProjectButton);
         return new ScrumPage();
     }
