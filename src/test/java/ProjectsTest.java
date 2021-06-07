@@ -22,11 +22,11 @@ public class ProjectsTest {
     @Test
     public void createScrumProject() {
         ProjectsViewerPage projectsViewerPage = new ProjectsViewerPage();
-        ScrumPage scrumPage = projectsViewerPage.clickNewProjectButton().clickScrumProjectButton();
-        scrumPage.setProjectNameField(BasePage.GENERATED_NAME);
+        ScrumPage scrumPage = projectsViewerPage.clickNewProjectButton().initPage().clickScrumProjectButton();
+        scrumPage.initPage().setProjectNameField(BasePage.GENERATED_NAME);
         scrumPage.setProjectDescriptionField(BasePage.GENERATED_NAME + "___Description");
         ProjectPage projectPage = scrumPage.clickCreateProjectButton();
-        Assert.assertTrue(projectPage.isScrumTextH1Displayed(), "Error while creating a Scrum project");
+        Assert.assertTrue(projectPage.initPage().isScrumTextH1Displayed(), "Error while creating a Scrum project");
 
     }
 }
