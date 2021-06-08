@@ -1,3 +1,4 @@
+import Helpers.Infos;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -13,7 +14,7 @@ public class ProjectsViewerPage extends BasePage<ProjectsViewerPage> {
 
     @Override
     public String getUrl() {
-        return BASE_URL;
+        return Infos.BASE_URL;
     }
 
     public ProjectsViewerPage() {

@@ -2,6 +2,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import setup.DriverSetUp;
+import Helpers.Infos;
 
 public class LoginPage extends BasePage<LoginPage> {
 
@@ -20,7 +21,7 @@ public class LoginPage extends BasePage<LoginPage> {
 
     @Override
     public String getUrl() {
-        return BASE_URL + "login";
+        return Infos.BASE_URL + "login";
     }
 
     public LoginPage() {

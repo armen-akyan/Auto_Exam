@@ -1,3 +1,4 @@
+import Helpers.Infos;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -23,8 +24,8 @@ public class ProjectsTest {
     public void createScrumProject() {
         ProjectsViewerPage projectsViewerPage = new ProjectsViewerPage();
         ScrumPage scrumPage = projectsViewerPage.clickNewProjectButton().initPage().clickScrumProjectButton();
-        scrumPage.initPage().setProjectNameField(BasePage.GENERATED_NAME);
-        scrumPage.setProjectDescriptionField(BasePage.GENERATED_NAME + "___Description");
+        scrumPage.initPage().setProjectNameField(Infos.GENERATED_NAME);
+        scrumPage.setProjectDescriptionField(Infos.GENERATED_NAME + "___Description");
         ProjectPage projectPage = scrumPage.clickCreateProjectButton();
         Assert.assertTrue(projectPage.initPage().isScrumTextH1Displayed(), "Error while creating a Scrum project");
 

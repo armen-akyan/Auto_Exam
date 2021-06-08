@@ -1,3 +1,4 @@
+import Helpers.Infos;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -9,7 +10,7 @@ public class ProjectPage extends BasePage<ProjectPage> {
 
     @Override
     public String getUrl() {
-        return BASE_URL + "/project/" + USERNAME + "-" + GENERATED_NAME + "/backlog";
+        return Infos.BASE_URL + "/project/" + Infos.USERNAME + "-" + Infos.GENERATED_NAME + "/backlog";
     }
 
     public boolean isScrumTextH1Displayed() {

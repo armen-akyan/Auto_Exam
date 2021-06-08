@@ -1,3 +1,4 @@
+import Helpers.Infos;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -17,7 +18,7 @@ public class ScrumPage extends BasePage<ScrumPage> {
 
     @Override
     public String getUrl() {
-        return BASE_URL + "/project/new/scrum";
+        return Infos.BASE_URL + "/project/new/scrum";
     }
 
     public void setProjectNameField(String text) {

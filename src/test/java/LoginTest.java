@@ -1,8 +1,13 @@
+import Helpers.ApiHelper;
+import Helpers.Infos;
+import com.google.gson.JsonObject;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import setup.DriverSetUp;
+
+import java.io.IOException;
 
 public class LoginTest {
     @BeforeMethod
@@ -16,10 +21,16 @@ public class LoginTest {
     }
 
     @Test
+    public static void loginWithAPI() throws IOException {
+        JsonObject jsonObject = ApiHelper.login();
+        Assert.assertEquals(jsonObject.get("full_name").toString(), "\"Armen Armenakyan\"", "Login failed");
+    }
+
+    @Test
     public static void loginWithValidCredentials() throws InterruptedException {
         LoginPage loginPage = new LoginPage();
-        loginPage.enterUsername(BasePage.USERNAME);
-        loginPage.enterPassword(BasePage.PASSWORD);
+        loginPage.enterUsername(Infos.USERNAME);
+        loginPage.enterPassword(Infos.PASSWORD);
         loginPage.clickLogInButton();
 
         Thread.sleep(2000);
@@ -29,8 +40,8 @@ public class LoginTest {
     @Test
     public void loginWithInvalidCredentials() throws InterruptedException {
         LoginPage loginPage = new LoginPage();
-        loginPage.enterUsername(BasePage.USERNAME);
-        loginPage.enterPassword(BasePage.PASSWORD);
+        loginPage.enterUsername(Infos.USERNAME);
+        loginPage.enterPassword(Infos.PASSWORD);
         loginPage.clickLogInButton();
 
         Thread.sleep(2000);

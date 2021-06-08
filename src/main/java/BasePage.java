@@ -1,4 +1,4 @@
-import Helpers.WaitHelper;
+import Helpers.*;
 import org.apache.log4j.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -11,12 +11,8 @@ import java.util.UUID;
 import static setup.DriverSetUp.getDriver;
 
 public abstract class BasePage<T> {
-    private static final Logger LOGGER = Logger.getLogger(BasePage.class);
-    public static final String BASE_URL = "https://tree.taiga.io/";
-    public static final String GENERATED_NAME = UUID.randomUUID().toString();
-    public static final String USERNAME = "amosh2002";
-    public static final String PASSWORD = "Amosh2002";
 
+    public static final Logger LOGGER = Logger.getLogger(BasePage.class);
 
     public BasePage() {
         getDriver();
