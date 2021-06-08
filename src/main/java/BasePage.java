@@ -13,9 +13,9 @@ import static setup.DriverSetUp.getDriver;
 public abstract class BasePage<T> {
     private static final Logger LOGGER = Logger.getLogger(BasePage.class);
     public static final String BASE_URL = "https://tree.taiga.io/";
+    public static final String GENERATED_NAME = UUID.randomUUID().toString();
     public static final String USERNAME = "amosh2002";
     public static final String PASSWORD = "Amosh2002";
-    public static final String GENERATED_NAME = UUID.randomUUID().toString();
 
 
     public BasePage() {
