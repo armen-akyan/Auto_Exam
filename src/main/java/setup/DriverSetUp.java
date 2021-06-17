@@ -1,24 +1,43 @@
 package setup;
 
+import base.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
-public abstract class DriverSetUp {
-    private static WebDriver driver;
+public class DriverSetUp {
 
-    public static WebDriver getDriver() {
-        if (driver != null) {
-            return driver;
-        }
-        System.setProperty("webdriver.chrome.driver", "/Users/armen_a02/IdeaProjects/Auto_Exam/src/chromedriver");
-        driver = new ChromeDriver();
-        driver.get("https://tree.taiga.io/");
-        return driver;
+    private WebDriver driver;
+    private static final String BROWSER = System.getProperty("selenium.browser", "firefox");
+    private static ThreadLocal<WebDriver> driverThread = new ThreadLocal<>();
+
+    public static DriverSetUp get() {
+        return new DriverSetUp();
     }
 
+    public WebDriver getDriver() {
+        if (driverThread.get() == null) {
+            switch (BROWSER) {
+                case "chrome":
+                    System.setProperty("webdriver.chrome.driver",
+                            "src/test/resources/chromedriver");
+                    driver = new ChromeDriver();
+                    driverThread.set(driver);
+                    break;
+
+                case "firefox":
+                    System.setProperty("webdriver.gecko.driver",
+                            "src/test/resources/geckodriver");
+                    driver = new FirefoxDriver();
+                    driverThread.set(driver);
+                    break;
+            }
+        }
+        return driverThread.get();
+    }
     public static void quit() {
-        DriverSetUp.getDriver().quit();
-        driver = null;
+        driverThread.get().quit();
+        driverThread.remove();
     }
 
 }

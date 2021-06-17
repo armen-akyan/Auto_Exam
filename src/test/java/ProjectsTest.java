@@ -5,13 +5,11 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import setup.DriverSetUp;
 
-import java.util.UUID;
-
 public class ProjectsTest {
 
     @BeforeMethod
     public void drive() throws InterruptedException {
-        DriverSetUp.getDriver().manage().window().maximize();
+        DriverSetUp.get().getDriver().manage().window().maximize();
         LoginTest.loginWithValidCredentials();
     }
 
@@ -28,6 +26,5 @@ public class ProjectsTest {
         scrumPage.setProjectDescriptionField(Infos.GENERATED_NAME + "___Description");
         ProjectPage projectPage = scrumPage.clickCreateProjectButton();
         Assert.assertTrue(projectPage.initPage().isScrumTextH1Displayed(), "Error while creating a Scrum project");
-
     }
 }

@@ -1,8 +1,9 @@
+import base.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import setup.DriverSetUp;
 import Helpers.Infos;
+import setup.DriverSetUp;
 
 public class LoginPage extends BasePage<LoginPage> {
 
@@ -26,7 +27,17 @@ public class LoginPage extends BasePage<LoginPage> {
 
     public LoginPage() {
         open();
-        PageFactory.initElements(DriverSetUp.getDriver(), this);
+        PageFactory.initElements(DriverSetUp.get().getDriver(), this);
+    }
+
+    @Override
+    protected void load() {
+
+    }
+
+    @Override
+    protected void isLoaded() throws Error {
+        isDisplayed(usernameField);
     }
 
     public void enterUsername(String username) {

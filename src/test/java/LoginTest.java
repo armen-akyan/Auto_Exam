@@ -12,7 +12,7 @@ import java.io.IOException;
 public class LoginTest {
     @BeforeMethod
     public void drive() {
-        DriverSetUp.getDriver();
+        DriverSetUp.get().getDriver();
     }
 
     @AfterMethod
@@ -28,7 +28,7 @@ public class LoginTest {
 
     @Test
     public static void loginWithValidCredentials() throws InterruptedException {
-        LoginPage loginPage = new LoginPage();
+        LoginPage loginPage = new LoginPage().get();
         loginPage.enterUsername(Infos.USERNAME);
         loginPage.enterPassword(Infos.PASSWORD);
         loginPage.clickLogInButton();
@@ -39,7 +39,7 @@ public class LoginTest {
 
     @Test
     public void loginWithInvalidCredentials() throws InterruptedException {
-        LoginPage loginPage = new LoginPage();
+        LoginPage loginPage = new LoginPage().get();
         loginPage.enterUsername(Infos.USERNAME);
         loginPage.enterPassword(Infos.PASSWORD);
         loginPage.clickLogInButton();

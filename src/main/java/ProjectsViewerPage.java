@@ -1,4 +1,5 @@
 import Helpers.Infos;
+import base.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -19,7 +20,17 @@ public class ProjectsViewerPage extends BasePage<ProjectsViewerPage> {
 
     public ProjectsViewerPage() {
         open();
-        PageFactory.initElements(DriverSetUp.getDriver(), this);
+        PageFactory.initElements(DriverSetUp.get().getDriver(), this);
+    }
+
+    @Override
+    protected void load() {
+
+    }
+
+    @Override
+    protected void isLoaded() throws Error {
+
     }
 
     public boolean isProfileIconDisplayed() {
