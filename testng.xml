@@ -1,7 +1,10 @@
 <suite name="Suite-3">
     <test name="all-packages" parallel="methods" thread-count="5">
+        <listeners>
+            <listener class-name="src.main.java.TestAllureListener"/>
+        </listeners>
         <packages>
-            <package name=".*" />
+            <package name=".*"/>
         </packages>
     </test>
 </suite>

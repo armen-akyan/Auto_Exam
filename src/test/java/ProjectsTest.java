@@ -1,4 +1,5 @@
 import Helpers.Infos;
+import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -21,6 +22,7 @@ public class ProjectsTest {
     }
 
     @Test
+    @Description("Test Case Description: Verify Create Scrum project functionality")
     public void createScrumProject() throws MalformedURLException {
         ProjectsViewerPage projectsViewerPage = new ProjectsViewerPage();
         ScrumPage scrumPage = projectsViewerPage.clickNewProjectButton().initPage().clickScrumProjectButton();
