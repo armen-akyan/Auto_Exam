@@ -2,12 +2,14 @@ import Helpers.ApiHelper;
 import Helpers.Infos;
 import com.google.gson.JsonObject;
 import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import setup.DriverSetUp;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 
 public class LoginTest {
     @BeforeMethod
@@ -16,8 +18,8 @@ public class LoginTest {
     }
 
     @AfterMethod
-    public void endDrive() {
-        DriverSetUp.quit();
+    public void endDrive(ITestResult result) {
+        DriverSetUp.get().quit();
     }
 
     @Test
@@ -27,7 +29,7 @@ public class LoginTest {
     }
 
     @Test
-    public static void loginWithValidCredentials() throws InterruptedException {
+    public static void loginWithValidCredentials() throws InterruptedException, MalformedURLException {
         LoginPage loginPage = new LoginPage().get();
         loginPage.enterUsername(Infos.USERNAME);
         loginPage.enterPassword(Infos.PASSWORD);

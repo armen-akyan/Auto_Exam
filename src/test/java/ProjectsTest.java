@@ -5,21 +5,23 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import setup.DriverSetUp;
 
+import java.net.MalformedURLException;
+
 public class ProjectsTest {
 
     @BeforeMethod
-    public void drive() throws InterruptedException {
+    public void drive() throws InterruptedException, MalformedURLException {
         DriverSetUp.get().getDriver().manage().window().maximize();
         LoginTest.loginWithValidCredentials();
     }
 
     @AfterMethod
     public void endDrive() {
-        DriverSetUp.quit();
+        DriverSetUp.get().quit();
     }
 
     @Test
-    public void createScrumProject() {
+    public void createScrumProject() throws MalformedURLException {
         ProjectsViewerPage projectsViewerPage = new ProjectsViewerPage();
         ScrumPage scrumPage = projectsViewerPage.clickNewProjectButton().initPage().clickScrumProjectButton();
         scrumPage.initPage().setProjectNameField(Infos.GENERATED_NAME);

@@ -5,6 +5,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import setup.DriverSetUp;
 
+import java.net.MalformedURLException;
+
 public class ProjectsViewerPage extends BasePage<ProjectsViewerPage> {
 
     @FindBy(css = "[tg-nav='profile']")
@@ -18,7 +20,7 @@ public class ProjectsViewerPage extends BasePage<ProjectsViewerPage> {
         return Infos.BASE_URL;
     }
 
-    public ProjectsViewerPage() {
+    public ProjectsViewerPage() throws MalformedURLException {
         open();
         PageFactory.initElements(DriverSetUp.get().getDriver(), this);
     }
