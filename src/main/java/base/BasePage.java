@@ -1,38 +1,41 @@
+package base;
+
 import Helpers.*;
 import org.apache.log4j.*;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.LoadableComponent;
+import setup.DriverSetUp;
 
-import java.util.UUID;
-
-import static setup.DriverSetUp.getDriver;
-
-public abstract class BasePage<T> {
+public abstract class BasePage<T extends LoadableComponent<T>> extends LoadableComponent<T> {
 
     public static final Logger LOGGER = Logger.getLogger(BasePage.class);
+    protected WebDriver driver;
+    protected static final String BASE_URL = System.getProperty("selenium.url", "https://tree.taiga.io/");
+
 
     public BasePage() {
-        getDriver();
+        this.driver = DriverSetUp.get().getDriver();
+        PageFactory.initElements(driver, this);
     }
 
     public abstract String getUrl();
 
-    protected T initPage() {
-        PageFactory.initElements(getDriver(), this);
-        LOGGER.info("Initialising to " + getDriver().getCurrentUrl());
+    public T initPage() {
+        PageFactory.initElements(DriverSetUp.get().getDriver(), this);
+        LOGGER.info("Initialising to " + DriverSetUp.get().getDriver().getCurrentUrl());
         return (T) this;
     }
 
-    protected final void open() {
+    protected void open() {
         openByURL(getUrl());
     }
 
     protected void openByURL(String url) {
         LOGGER.info("Opening URL -> " + url);
-        getDriver().get(url);
+        DriverSetUp.get().getDriver().get(url);
     }
 
     protected boolean isDisplayed(WebElement element) {

@@ -1,4 +1,5 @@
 import Helpers.Infos;
+import base.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -17,4 +18,13 @@ public class ProjectPage extends BasePage<ProjectPage> {
         return isDisplayed(scrumTextH1);
     }
 
+    @Override
+    protected void load() {
+
+    }
+
+    @Override
+    protected void isLoaded() throws Error {
+
+    }
 }

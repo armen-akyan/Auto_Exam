@@ -1,4 +1,5 @@
 import Helpers.Infos;
+import base.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -34,4 +35,13 @@ public class ScrumPage extends BasePage<ScrumPage> {
         return new ProjectPage();
     }
 
+    @Override
+    protected void load() {
+
+    }
+
+    @Override
+    protected void isLoaded() throws Error {
+
+    }
 }

@@ -1,12 +1,10 @@
-<suite name="Suite-3" verbose="1">
-    <listeners>
-        <listener class-name="listeners.TestListener"/>
-    </listeners>
-    <test name="all-packages">
+<suite name="Suite-3">
+    <test name="all-packages" parallel="methods" thread-count="5">
+        <listeners>
+            <listener class-name="src.main.java.TestAllureListener"/>
+        </listeners>
         <packages>
-            <package>
-                <name>src.test.java</name>
-            </package>
+            <package name=".*"/>
         </packages>
     </test>
 </suite>

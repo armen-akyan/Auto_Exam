@@ -1,8 +1,11 @@
 import Helpers.Infos;
+import base.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import setup.DriverSetUp;
+
+import java.net.MalformedURLException;
 
 public class ProjectsViewerPage extends BasePage<ProjectsViewerPage> {
 
@@ -17,9 +20,19 @@ public class ProjectsViewerPage extends BasePage<ProjectsViewerPage> {
         return Infos.BASE_URL;
     }
 
-    public ProjectsViewerPage() {
+    public ProjectsViewerPage() throws MalformedURLException {
         open();
-        PageFactory.initElements(DriverSetUp.getDriver(), this);
+        PageFactory.initElements(DriverSetUp.get().getDriver(), this);
+    }
+
+    @Override
+    protected void load() {
+
+    }
+
+    @Override
+    protected void isLoaded() throws Error {
+
     }
 
     public boolean isProfileIconDisplayed() {

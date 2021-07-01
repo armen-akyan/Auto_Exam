@@ -3,12 +3,8 @@ package Helpers;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import okhttp3.*;
-import org.openqa.selenium.JavascriptExecutor;
-import setup.DriverSetUp;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.UUID;
 
 public class ApiHelper {
     public static JsonObject login() throws IOException {
